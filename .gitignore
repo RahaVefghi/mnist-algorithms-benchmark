@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+.vscode/
+.idea/
+tempCodeRunnerFile*
+.ipynb_checkpoints
+.DS_Store
+Thumbs.db
+
+# Heavy CSV datasets & weights
+mnist_train.csv
+mnist_test.csv
+*.h5
+*.keras
