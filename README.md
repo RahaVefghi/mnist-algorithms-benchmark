@@ -1,37 +1,36 @@
 # MNIST Multi-Algorithm Comparative Benchmark
-### بنچمارک و مقایسه جامع ۶ الگوریتم یادگیری ماشین و یادگیری عمیق روی داده‌های MNIST
 
-> 🎓 **Academic Note:** This project was developed as a comprehensive research and practical assignment for the **Machine Learning & Deep Learning Course** to analyze the performance, accuracy, and computational trade-offs of 6 distinct learning paradigms on the classic MNIST handwritten digits dataset.
-
----
-
-## 📌 Project Overview (معرفی پروژه)
-
-دیتاست MNIST (شامل ۷۰,۰۰۰ تصویر ۲۸×۲۸ از ارقام دست‌نویس ۰ تا ۹) استاندارد طلایی ارزیابی الگوریتم‌های هوش مصنوعی است. در این پروژه، ۶ الگوریتم از پارادایم‌های مختلف بر روی یک مجموعه داده یکسان پیاده‌سازی، آموزش و مقایسه شده‌اند:
-
-1. **رگرسیون خطی (Linear Regression):** به عنوان یک مدل پایه (Baseline) برای سنجش توانایی مدل‌های خطی پیوسته روی تسک‌های گسسته.
-2. **رگرسیون لجستیک (Logistic Regression):** دسته‌بند خطی چندکلاسه استاندارد.
-3. **کاهش بعد با PCA + نزدیک‌ترین همسایه (KNN):** کاهش بعد ویژگی‌ها از ۷۸۴ به ۵۰ مولفه اصلی با تحلیل مولفه‌های اساسی (PCA) و سپس دسته‌بندی با الگوریتم KNN.
-4. **خوشه‌بندی K-Means (یادگیری بدون نظارت):** خوشه‌بندی بدون نظارت ارقام در ۱۰ کلاستر و تخصیص برچسب با رای‌گیری حداکثری (Majority Voting).
-5. **شبکه عصبی پرسپترون چندلایه (MLP):** شبکه عمیق Fully Connected با لایه‌های Batch Normalization، تابع فعال‌ساز ReLU و Dropout (0.3).
-6. **شبکه عصبی کانوولوشنی (CNN):** شبکه کانوولوشنی دوبعدی (Conv2D + MaxPooling) با Dropout (0.5) جهت استخراج ویژگی‌های مکانی تصویر.
+> 🎓 **Academic Note:** This project was developed as a comprehensive benchmark assignment for the **Machine Learning & Deep Learning Course** to analyze the accuracy, convergence, and computational trade-offs of 6 distinct learning paradigms on the classic MNIST handwritten digits dataset.
 
 ---
 
-## 📊 Comparative Summary (جدول مقایسه الگوریتم‌ها)
+## 📌 Project Overview
 
-| ردیف | الگوریتم (Algorithm) | پارادایم یادگیری | روش استخراج ویژگی / ساختار |
-| :---: | :--- | :--- | :--- |
-| ۱ | **Linear Regression** | Supervised (Linear) | ۷۸۴ پیکسل خام |
-| ۲ | **Logistic Regression** | Supervised (Linear Classifier) | ۷۸۴ پیکسل خام با بهینه‌سازی L-BFGS |
-| ۳ | **PCA (50) + KNN** | Instance-Based Learning | کاهش بعد به ۵۰ مولفه (توضیح واریانس بالا) |
-| ۴ | **PCA (50) + K-Means** | Unsupervised Clustering | خوشه‌بندی فضایی بدون برچسب اولیه |
-| ۵ | **MLP (Deep ANN)** | Deep Learning (Dense) | Input(784) ➔ Dense(256) ➔ Dense(128) ➔ Output(10) |
-| ۶ | **CNN (ConvNet)** | Deep Learning (Spatial) | Conv2D(32) ➔ MaxPool ➔ Conv2D(64) ➔ Dense(128) |
+The MNIST dataset (70,000 grayscale $28 \times 28$ images across 10 classes) is the benchmark standard for evaluating machine learning algorithms. In this project, 6 distinct algorithmic paradigms are implemented, trained, and benchmarked under a unified evaluation pipeline:
+
+1. **Linear Regression:** Baseline model investigating continuous projection applied to discrete multi-class classification.
+2. **Logistic Regression:** Multinomial linear classifier trained with L-BFGS optimization.
+3. **PCA + K-Nearest Neighbors (KNN):** Dimensionality reduction condensing 784 pixel dimensions to 50 principal components, followed by distance-based classification.
+4. **PCA + K-Means (Unsupervised Clustering):** Unsupervised spatial clustering into 10 partitions, mapping clusters to digit labels via majority voting.
+5. **Multilayer Perceptron (MLP):** Deep fully connected neural network with Batch Normalization, ReLU activations, and Dropout (0.3).
+6. **Convolutional Neural Network (CNN):** 2D ConvNet (Conv2D + MaxPooling) with spatial feature extraction and Dropout (0.5).
 
 ---
 
-## 🏗️ Architecture Comparison (نمودار مقایسه ساختار)
+## 📊 Comparative Summary
+
+| # | Algorithm | Learning Paradigm | Feature Representation / Architecture |
+| :-: | :--- | :--- | :--- |
+| 1 | **Linear Regression** | Supervised (Linear Baseline) | 784 flattened raw pixels |
+| 2 | **Logistic Regression** | Supervised (Linear Classifier) | 784 raw pixels, L-BFGS solver |
+| 3 | **PCA (50) + KNN** | Instance-Based Learning | 50 Principal Components (high variance preserved) |
+| 4 | **PCA (50) + K-Means** | Unsupervised Clustering | Spatial clustering without initial ground truth labels |
+| 5 | **MLP (Deep ANN)** | Deep Learning (Dense) | Input(784) ➔ Dense(256) ➔ Dense(128) ➔ Softmax(10) |
+| 6 | **CNN (ConvNet)** | Deep Learning (Spatial) | Conv2D(32) ➔ MaxPool ➔ Conv2D(64) ➔ Dense(128) |
+
+---
+
+## 🏗️ Architecture Comparison
 
 ```mermaid
 flowchart TD
@@ -56,43 +55,49 @@ flowchart TD
 
 ---
 
-## 📂 Project Structure (ساختار فایل‌ها)
+## 📂 Project Structure
 
 ```text
 mnist-algorithms-benchmark/
 │
-├── models_on_mnist.py    # اسکریپت جامع آموزش و بنچمارک ۶ الگوریتم با خروجی نهایی
-├── mnist_knn.ipynb       # جوپیتر نوت‌بوک تحلیل بصری، تحلیل ابعاد و الگوریتم KNN
-├── requirements.txt      # کتابخانه‌های مورد نیاز (TensorFlow, Scikit-Learn, etc.)
-├── .gitignore            # فایل‌های نادیده گرفته‌شده توسط گیت
-└── README.md             # مستندات پروژه
+├── models_on_mnist.py    # Unified benchmark script evaluating all 6 algorithms
+├── mnist_knn.ipynb       # Jupyter notebook with exploratory analysis & PCA-KNN experiments
+├── requirements.txt      # Project dependencies (TensorFlow, Scikit-Learn, etc.)
+├── .gitignore            # Files excluded from version control
+└── README.md             # Project documentation
 ```
 
 ---
 
-## ⚙️ Installation & Usage (نحوه نصب و اجرا)
+## ⚙️ Installation & Usage
 
-### ۱. نصب وابستگی‌ها
+### 1. Clone the repository
+```bash
+git clone https://github.com/RahaVefghi/mnist-algorithms-benchmark.git
+cd mnist-algorithms-benchmark
+```
+
+### 2. Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### ۲. اجرای بنچمارک کامل
-اسکریپت به صورت هوشمند در صورت نبود فایل‌های سنگین CSV محلی، دیتاست را مستقیماً از طریق Keras بارگذاری می‌کند:
+### 3. Run the complete benchmark
+The benchmark automatically falls back to fetching MNIST through Keras if local CSV files are absent, running out-of-the-box without manual downloads:
 ```bash
 python models_on_mnist.py
 ```
 
-### ۳. بررسی نوت‌بوک تحلیل بصری
+### 4. Interactive notebook analysis
 ```bash
 jupyter notebook mnist_knn.ipynb
 ```
 
 ---
 
-## 🛠️ Technologies Used (فناوری‌های به‌کار رفته)
+## 🛠️ Technologies Used
 - **Python 3.10+**
-- **TensorFlow / Keras:** MLP and CNN implementations
-- **Scikit-Learn:** PCA, Logistic Regression, KNN, KMeans
-- **Pandas & NumPy:** Data loading and matrix manipulation
-- **Jupyter Notebook:** Exploratory analysis
+- **TensorFlow / Keras:** MLP and CNN implementations, dataset loader
+- **Scikit-Learn:** PCA, LogisticRegression, LinearRegression, KNeighborsClassifier, KMeans
+- **Pandas & NumPy:** Tabular data processing and matrix operations
+- **Matplotlib:** Comparison visualization
